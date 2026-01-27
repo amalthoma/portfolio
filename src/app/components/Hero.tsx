@@ -47,7 +47,7 @@ export default function Hero() {
 
           {/* Social Links */}
           <div className="flex gap-6 items-center">
-            <a href="https://github.com" target="_blank" className="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">
+            <a href="https://github.com/amalthoma" target="_blank" className="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">
               <Github size={24} />
             </a>
             <a href="https://www.linkedin.com/in/amal-thomas-67aa0a263/" target="_blank" className="text-slate-500 hover:text-[#0077b5] transition-colors">

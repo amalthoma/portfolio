@@ -1,58 +1,116 @@
 "use client";
 import { motion } from "framer-motion";
-import { Github, ExternalLink } from "lucide-react";
+import { Github, ExternalLink, Trello, TrendingUp, PlayCircle, ArrowUpRight } from "lucide-react";
 
 const projects = [
   {
-    title: "Ticket-Lite",
-    desc: "A comprehensive SaaS platform for event management and ticket sales. Features include organization workspaces, invite systems, and secure payment flow integration.",
-    tags: ["Django", "React", "Tailwind", "PostgreSQL"],
-    links: { demo: "#", code: "#" }, // Add your actual links
+    title: "Ticket-Lite SaaS",
+    desc: "A Trello-style event management platform simulating enterprise logic. Features organization workspaces, role-based access control (RBAC), and secure invitation systems.",
+    tags: ["Django", "React", "PostgreSQL", "Docker"],
+    links: { demo: "https://ticket-lite-frontend.vercel.app/", code: "https://github.com/amalthoma/ticket-lite-backend" },
+    gradient: "from-blue-500 to-indigo-600",
+    icon: <Trello size={48} className="text-white/80" />
   },
   {
-    title: "Finance Tracker",
-    desc: "Full-stack financial analytics tool featuring real-time data visualization, budget setting, and secure transaction recording.",
+    title: "Finance Analytics",
+    desc: "Real-time expense tracking with dynamic data visualization. Implemented RESTful APIs for secure budget monitoring and granular spending analysis.",
     tags: ["Python", "Django REST", "Chart.js"],
-    links: { demo: "#", code: "#" },
+    links: { demo: "https://finance-web-xvy4.onrender.com/", code: "https://github.com/amalthoma/finance-dashboard" },
+    gradient: "from-emerald-500 to-teal-600",
+    icon: <TrendingUp size={48} className="text-white/80" />
   },
   {
-    title: "Netflix Clone",
-    desc: "High-fidelity UI clone demonstrating complex state management and efficient consumption of third-party media APIs.",
+    title: "Netflix Clone UI",
+    desc: "Pixel-perfect streaming interface. Demonstrates complex Redux state management and efficient handling of large media datasets via TMDB API.",
     tags: ["React", "Redux", "TMDB API"],
     links: { demo: "#", code: "#" },
+    gradient: "from-red-600 to-rose-600",
+    icon: <PlayCircle size={48} className="text-white/80" />
   },
 ];
 
 export default function Projects() {
   return (
-    <section className="py-20">
-      <h2 className="text-3xl font-bold mb-8">Featured Projects</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {projects.map((project, index) => (
-          <motion.div
-            key={index}
+    <section className="py-24 bg-slate-50 dark:bg-slate-900" id="projects">
+      <div className="max-w-6xl mx-auto px-6">
+        
+        {/* Section Header */}
+        <div className="mb-16">
+          <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
-            className="border border-slate-200 dark:border-slate-700 p-6 rounded-xl hover:shadow-lg dark:hover:bg-slate-800 transition-all"
+            transition={{ duration: 0.5 }}
+            className="text-4xl font-bold mb-4 text-slate-900 dark:text-white"
           >
-            <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-            <p className="text-slate-600 dark:text-slate-400 mb-4 h-20 text-sm">
-              {project.desc}
-            </p>
-            <div className="flex flex-wrap gap-2 mb-6">
-              {project.tags.map((tag) => (
-                <span key={tag} className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-xs rounded-full font-medium">
-                  {tag}
-                </span>
-              ))}
-            </div>
-            <div className="flex gap-4">
-               {/* Add links here */}
-               <button className="flex items-center gap-2 text-sm font-medium hover:text-blue-500 transition-colors"><Github size={16}/> Code</button>
-            </div>
-          </motion.div>
-        ))}
+            Featured Projects
+          </motion.h2>
+          <motion.div 
+            initial={{ opacity: 0, width: 0 }}
+            whileInView={{ opacity: 1, width: "100px" }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="h-1 bg-blue-600 rounded-full"
+          />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="group relative bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700 hover:-translate-y-2"
+            >
+              {/* Visual Thumbnail (Gradient Placeholder) */}
+              <div className={`h-48 bg-gradient-to-br ${project.gradient} flex items-center justify-center relative overflow-hidden`}>
+                {/* Abstract Background shapes */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-10 -mt-10 blur-2xl" />
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-black/10 rounded-full -ml-5 -mb-5 blur-xl" />
+                
+                {/* Icon */}
+                <div className="transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
+                  {project.icon}
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-8">
+                <div className="flex justify-between items-start mb-4">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    {project.title}
+                  </h3>
+                  <a href={project.links.code} target="_blank" rel="noreferrer" className="text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
+                    <Github size={20} />
+                  </a>
+                </div>
+
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6 h-20">
+                  {project.desc}
+                </p>
+
+                {/* Tech Stack Pills */}
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="px-3 py-1 bg-slate-100 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300 text-xs rounded-full font-medium border border-slate-200 dark:border-slate-600">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Action Button */}
+                <a 
+                  href={project.links.demo !== "#" ? project.links.demo : project.links.code}
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="w-full inline-flex justify-center items-center gap-2 py-3 rounded-lg bg-slate-900 dark:bg-slate-700 text-white font-medium hover:bg-blue-600 dark:hover:bg-blue-600 transition-colors"
+                >
+                  View Project <ArrowUpRight size={16} />
+                </a>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
