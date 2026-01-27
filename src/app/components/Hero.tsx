@@ -65,31 +65,36 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Right Column: IMAGE */}
+        {/* Right Column: EXECUTIVE PORTRAIT */}
         <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.7, delay: 0.2 }}
         className="order-1 lg:order-2 flex justify-center lg:justify-end relative"
         >
-            {/* The Gradient Border Effect */}
             <div className="relative w-64 h-64 md:w-80 md:h-80">
-                {/* Animated Glow Behind */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur-2xl opacity-50 animate-pulse"></div>
+                {/* Subtle Backdrop Glow (Silver/Blue for Executive Feel) */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-slate-200 to-slate-400 dark:from-slate-700 dark:to-slate-900 rounded-full blur-2xl opacity-40"></div>
                 
-                {/* The Circle Container */}
-                <div className="relative w-full h-full rounded-full border-[6px] border-white dark:border-slate-800 overflow-hidden shadow-2xl">
+                {/* The Frame */}
+                <div className="relative w-full h-full rounded-full border-[4px] border-slate-100 dark:border-slate-700 overflow-hidden shadow-2xl">
                     <Image 
                         src="/profile.jpeg"
                         alt="Amal Thomas"
                         fill
                         priority
-                        quality={100} // Force High Quality rendering
-                        // THE SECRET SAUCE: 'object-cover' fills the circle
-                        // 'object-[center_20%]' centers horizontally but focuses 20% from the top (Your Face)
-                        className="object-cover object-[center_20%]" 
+                        quality={100}
+                        // EXECUTIVE STYLING MAGIC:
+                        // 1. grayscale-100: Removes distracting colors (forest/car)
+                        // 2. contrast-125: Adds a sharp, premium 'magazine' look
+                        // 3. scale-110: Zooms in slightly to fill the frame
+                        // 4. object-[center_30%]: Crops out the 'ONTOUR' logo, focusing on the face
+                        className="object-cover object-[center_30%] scale-110 grayscale contrast-125 hover:grayscale-0 transition-all duration-700 ease-in-out" 
                     />
                 </div>
+                
+                {/* Optional: 'Status Dot' to show you are active */}
+                <div className="absolute bottom-4 right-4 w-6 h-6 bg-green-500 border-4 border-white dark:border-slate-900 rounded-full z-10"></div>
             </div>
         </motion.div>
       </div>
