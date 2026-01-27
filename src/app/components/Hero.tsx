@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, FileText, ArrowRight, Code2, Terminal, Cpu } from "lucide-react";
+import { Github, Linkedin, Mail, FileText, ArrowRight } from "lucide-react";
+import Image from "next/image"; // Import Next.js Image component
 
 export default function Hero() {
   return (
@@ -9,14 +10,14 @@ export default function Hero() {
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-500/5 rounded-full blur-[100px] dark:bg-blue-600/10 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[100px] dark:bg-purple-600/10 pointer-events-none" />
 
-      {/* CHANGED: max-w-6xl to match Projects */}
       <div className="max-w-6xl mx-auto px-6 z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         
-        {/* Left Column: Content */}
+        {/* Left Column: Text Content */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
+          className="order-2 lg:order-1"
         >
           <span className="inline-flex items-center gap-2 py-2 px-4 rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 text-sm font-semibold mb-8 border border-blue-100 dark:border-blue-800/50">
             <span className="relative flex h-2 w-2">
@@ -64,35 +65,35 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Right Column: Visual Element / Abstract Code Representation */}
+        {/* Right Column: IMAGE */}
         <motion.div
-           initial={{ opacity: 0, scale: 0.9 }}
-           animate={{ opacity: 1, scale: 1 }}
-           transition={{ duration: 0.7, delay: 0.2 }}
-           className="hidden lg:block relative"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.7, delay: 0.2 }}
+        className="order-1 lg:order-2 flex justify-center lg:justify-end relative"
         >
-          <div className="relative z-10 bg-slate-900 rounded-2xl p-6 shadow-2xl border border-slate-800 rotate-3 hover:rotate-0 transition-transform duration-500">
-             <div className="flex gap-2 mb-4">
-                <div className="w-3 h-3 rounded-full bg-red-500"/>
-                <div className="w-3 h-3 rounded-full bg-yellow-500"/>
-                <div className="w-3 h-3 rounded-full bg-green-500"/>
-             </div>
-             <pre className="text-sm text-blue-300 font-mono leading-relaxed">
-                {`const engineer = {
-                name: "Amal Thomas",
-                role: "Full-Stack Engineer",
-                stack: {
-                    frontend: ["Next.js", "React", "Tailwind"],
-                    backend: ["Django", "Python", "PostgreSQL"],
-                    infra: ["Docker", "CI/CD", "AWS"]
-                },
-                status: "Ready to deploy 🚀"
-                };`}
-             </pre>
-          </div>
-          <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl -z-10 blur-xl opacity-30"></div>
+            {/* The Gradient Border Effect */}
+            <div className="relative w-64 h-64 md:w-80 md:h-80">
+                {/* Animated Glow Behind */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur-2xl opacity-50 animate-pulse"></div>
+                
+                {/* The Circle Container */}
+                <div className="relative w-full h-full rounded-full border-[6px] border-white dark:border-slate-800 overflow-hidden shadow-2xl">
+                    <Image 
+                        src="/profile.jpeg"
+                        alt="Amal Thomas"
+                        fill
+                        priority
+                        quality={100} // Force High Quality rendering
+                        // THE SECRET SAUCE: 'object-cover' fills the circle
+                        // 'object-[center_20%]' centers horizontally but focuses 20% from the top (Your Face)
+                        className="object-cover object-[center_20%]" 
+                    />
+                </div>
+            </div>
         </motion.div>
       </div>
     </section>
   );
 }
+
