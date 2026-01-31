@@ -46,7 +46,7 @@ export default function Hero() {
               View My Work
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </a>
-            <a href="/AMAL_THOMAS.pdf" target="_blank" className="group bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white px-8 py-4 rounded-full font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors flex items-center gap-2">
+            <a href="/AMAL_THOMAS_Resume (2).pdf" target="_blank" className="group bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white px-8 py-4 rounded-full font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors flex items-center gap-2">
               <FileText size={18} className="text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors"/>
               Download Resume
             </a>
