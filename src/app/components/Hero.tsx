@@ -1,9 +1,30 @@
 "use client";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, FileText, ArrowRight } from "lucide-react";
-import Image from "next/image"; // Import Next.js Image component
+import Image from "next/image"; 
 
 export default function Hero() {
+
+  // Function to handle smooth download
+  const handleDownloadResume = (e: React.MouseEvent) => {
+    e.preventDefault();
+    
+    // 1. Define the path to your file in the 'public' folder
+    const resumeUrl = "/AMAL_THOMAS_Resume (2).pdf";
+    
+    // 2. Create a temporary link element
+    const link = document.createElement('a');
+    link.href = resumeUrl;
+    
+    // 3. Set the filename you want the user to save it as
+    link.download = "Amal_Thomas_FullStack_Resume.pdf"; 
+    
+    // 4. Append to body, click, and remove
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-20 pb-10">
       {/* Background Gradients */}
@@ -46,10 +67,15 @@ export default function Hero() {
               View My Work
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </a>
-            <a href="/AMAL_THOMAS_Resume (2).pdf" target="_blank" className="group bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white px-8 py-4 rounded-full font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors flex items-center gap-2">
+            
+            {/* UPDATED DOWNLOAD BUTTON */}
+            <button 
+              onClick={handleDownloadResume}
+              className="group bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white px-8 py-4 rounded-full font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors flex items-center gap-2 cursor-pointer"
+            >
               <FileText size={18} className="text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors"/>
               Download Resume
-            </a>
+            </button>
           </div>
 
           <div className="flex gap-6 items-center border-t border-slate-200 dark:border-slate-800 pt-8">
@@ -73,7 +99,7 @@ export default function Hero() {
         className="order-1 lg:order-2 flex justify-center lg:justify-end relative"
         >
             <div className="relative w-64 h-64 md:w-80 md:h-80">
-                {/* Subtle Backdrop Glow (Silver/Blue for Executive Feel) */}
+                {/* Subtle Backdrop Glow */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-slate-200 to-slate-400 dark:from-slate-700 dark:to-slate-900 rounded-full blur-2xl opacity-40"></div>
                 
                 {/* The Frame */}
@@ -84,16 +110,11 @@ export default function Hero() {
                         fill
                         priority
                         quality={100}
-                        // EXECUTIVE STYLING MAGIC:
-                        // 1. grayscale-100: Removes distracting colors (forest/car)
-                        // 2. contrast-125: Adds a sharp, premium 'magazine' look
-                        // 3. scale-110: Zooms in slightly to fill the frame
-                        // 4. object-[center_30%]: Crops out the 'ONTOUR' logo, focusing on the face
                         className="object-cover object-[center_30%] scale-110 grayscale contrast-125 hover:grayscale-0 transition-all duration-700 ease-in-out" 
                     />
                 </div>
                 
-                {/* Optional: 'Status Dot' to show you are active */}
+                {/* Status Dot */}
                 <div className="absolute bottom-4 right-4 w-6 h-6 bg-green-500 border-4 border-white dark:border-slate-900 rounded-full z-10"></div>
             </div>
         </motion.div>
@@ -101,4 +122,3 @@ export default function Hero() {
     </section>
   );
 }
-
