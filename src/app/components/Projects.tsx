@@ -23,7 +23,7 @@ const projects = [
     title: "Netflix Clone UI",
     desc: "Pixel-perfect streaming interface. Demonstrates complex Redux state management and efficient handling of large media datasets via TMDB API.",
     tags: ["React", "Redux", "TMDB API"],
-    links: { demo: "#", code: "#" },
+    links: { demo: "https://netflix-clone-c6gc.vercel.app/", code: "https://github.com/amalthoma/netflix-clone" },
     gradient: "from-red-600 to-rose-600",
     icon: <PlayCircle size={48} className="text-white/80" />
   },
